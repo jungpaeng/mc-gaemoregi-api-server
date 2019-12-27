@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "nodemon --watch src/ src/index.js"
+  },
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
+    "nodemon": "^2.0.2"
+  }
+}
