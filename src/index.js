@@ -14,5 +14,5 @@ router.use('/api', api.routes());
 app.use(cors()).use(router.routes()).use(router.allowedMethods());
 
 app.listen(PORT, () => {
-   console.log(`Gaemoregi API server is listening to port on 8800`)
+   console.log(`Gaemoregi API server is listening to port on ${PORT}`);
 });

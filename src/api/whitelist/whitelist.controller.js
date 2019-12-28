@@ -47,7 +47,20 @@ exports.delete = async (ctx) => {
 
     try {
         await sshSimpleExec(`whitelist remove ${id}`);
-        ctx.body = { message: 'Whitelist Deleted!' };
+
+        try {
+            const jsonFile = getJSONFileSystem(WHITELIST_FILE);
+
+            ctx.status = 200;
+            ctx.body = {
+                data: {
+                    results: jsonFile,
+                },
+            };
+        } catch (e) {
+            ctx.status = 500;
+            ctx.body = { message: 'WhiteList File not found' };
+        }
     } catch (e) {
         ctx.status = 500;
         ctx.body = { message: 'Unknown Error in ssh connected' };
@@ -59,7 +72,20 @@ exports.create = async (ctx) => {
 
     try {
         await sshSimpleExec(`whitelist add ${name}`);
-        ctx.body = { message: 'Whitelist Add!' };
+
+        try {
+            const jsonFile = getJSONFileSystem(WHITELIST_FILE);
+
+            ctx.status = 200;
+            ctx.body = {
+                data: {
+                    results: jsonFile,
+                },
+            };
+        } catch (e) {
+            ctx.status = 500;
+            ctx.body = { message: 'WhiteList File not found' };
+        }
     } catch (e) {
         ctx.status = 500;
         ctx.body = { message: 'Unknown Error in ssh connected' };
