@@ -7,10 +7,12 @@ const api = require('./api');
 const app = new Koa();
 const router = new Router();
 
+const PORT = 8800;
+
 router.use('/api', api.routes());
 
 app.use(cors()).use(router.routes()).use(router.allowedMethods());
 
-app.listen(4000, "0.0.0.0", () => {
-   console.log('test server is listening to port 4000')
+app.listen(PORT, () => {
+   console.log(`Gaemoregi API server is listening to port on 8800`)
 });

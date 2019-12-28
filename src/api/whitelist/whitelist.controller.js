@@ -8,7 +8,7 @@ const getJSONFileSystem = (file) => {
     return JSON.parse(jsonFile);
 };
 
-const WHITELIST_FILE = 'C:\\Dev\\MineCraft\\Bukkit\\whitelist.json';
+const WHITELIST_FILE = '/home/ubuntu/minecraft/server/whitelist.json';
 
 exports.list = (ctx) => {
     try {
