@@ -5,8 +5,7 @@ const time = require('../../lib/time');
 const {sshSimpleExec} = ssh;
 const {sleep} = time;
 
-// const USER_LIST_FILE = '/home/ubuntu/minecraft/server/whitelist.json';
-const USER_LIST_FILE = 'C:\\Dev\\MineCraft\\Bukkit\\plugins\\saveConcurrencyUser\\concurrencyUser.txt';
+const USER_LIST_FILE = '/home/ubuntu/minecraft/server/plugins/saveConcurrencyUser/concurrencyUser.txt';
 
 exports.list = async (ctx) => {
   try {
