@@ -9,7 +9,9 @@ const USER_LIST_FILE = '/home/ubuntu/minecraft/server/plugins/saveConcurrencyUse
 
 exports.list = async (ctx) => {
   try {
-    await sleep(3000);
+    await sshSimpleExec(`savecurrencyuser`);
+
+    await sleep(100);
     const file = fs.readFileSync(USER_LIST_FILE, 'utf8');
     const userList = file.split('\r\n')
       .filter(item => !!item && !['\r', '\n'].includes(item));
