@@ -9,11 +9,15 @@ const SSH_CLIENT_INFO = {
   readyTimeout : 360000
 };
 
-export const sshSimpleExec = async (command) => {
+const sshSimpleExec = async (command) => {
   await ssh.connect(SSH_CLIENT_INFO);
 
   ssh.exec(`screen -x minecraft -X stuff "${command}"`)
     .then(() => {
       ssh.exec('screen -x minecraft -X eval "stuff \\015"');
     });
+};
+
+module.exports = {
+  sshSimpleExec,
 };
