@@ -12,7 +12,8 @@ exports.list = async (ctx) => {
   try {
     await sleep(3000);
     const file = fs.readFileSync(USER_LIST_FILE, 'utf8');
-    const userList = file.split('\r\n').filter(item => !!item);
+    const userList = file.split('\r\n')
+      .filter(item => !!item && !['\r', '\n'].includes(item));
 
     ctx.body = {
       results: {
