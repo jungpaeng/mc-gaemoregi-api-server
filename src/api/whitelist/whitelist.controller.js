@@ -1,12 +1,8 @@
-const fs = require('fs');
-const nodeSSH = require('node-ssh');
-const ssh = new nodeSSH();
+const ssh = require('../../lib/ssh');
+const file = require('../../lib/file');
 
-const getJSONFileSystem = (file) => {
-    const jsonFile = fs.readFileSync(file, 'utf8');
-
-    return JSON.parse(jsonFile);
-};
+const {sshSimpleExec} = ssh;
+const {getJSONFileSystem} = file;
 
 const WHITELIST_FILE = '/home/ubuntu/minecraft/server/whitelist.json';
 
@@ -24,22 +20,6 @@ exports.list = (ctx) => {
         ctx.status = 500;
         ctx.body = { message: 'WhiteList File not found' };
     }
-};
-
-const sshSimpleExec = async (command) => {
-    await ssh.connect({
-        host: '125.141.133.20',
-        username: 'ubuntu',
-        port: '22',
-        password : 'xhdzmsdkdl_meis1541',
-        readyTimeout : 360000
-    });
-
-
-    ssh.exec(`screen -x minecraft -X stuff "${command}"`)
-        .then(res => {
-            ssh.exec('screen -x minecraft -X eval "stuff \\015"');
-        });
 };
 
 exports.delete = async (ctx) => {
